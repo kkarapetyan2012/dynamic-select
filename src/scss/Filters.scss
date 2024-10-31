@@ -1,0 +1,29 @@
+/* Filters.scss */
+.filters {
+    padding: 20px;
+    background-color: #f8f9fa;
+  
+    .select-container {
+      margin-bottom: 10px;
+    }
+}
+  
+/* Select.scss */
+.select-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    .react-select__control {
+      border-color: #ccc;
+      &:hover {
+        border-color: #888;
+      }
+    }
+}
+  
