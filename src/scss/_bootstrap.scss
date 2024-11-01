@@ -1,0 +1,69 @@
+/*!
+ * Bootstrap v4.5.0 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+ // Helpers
+@import "functions";
+@import "variables";
+@import "mixins";
+
+// Normalize
+// @import "root";
+@import "reboot";
+@import "main";
+// Layout
+@import "components/grid";
+
+// Global shared components
+// @import "code";
+@import "components/tables";
+@import "components/buttons";
+@import "components/forms";
+@import "components/scrollbar";
+@import "components/chips";
+@import "components/feedback";
+@import "components/spinner";
+@import "components/layout";
+@import "components/tabs";
+ //@import "transitions";
+@import "components/dropdown";
+// @import "button-group";
+// @import "input-group";
+// @import "custom-forms";
+// @import "nav";
+// @import "navbar";
+// @import "card";
+// @import "breadcrumb";
+// @import "pagination";
+@import "components/badge";
+// @import "jumbotron";
+// @import "alert";
+// @import "progress";
+// @import "media";
+// @import "list-group";
+// @import "close";
+// @import "toasts";
+// @import "components/modal";
+// @import "components/prompt";
+// @import "components/tabs";
+// @import "components/tooltip";
+@import "components/snackbar";
+@import "components/aside";
+// @import "popover";
+// @import "carousel";
+// @import "spinners";
+
+// Utils (functional css like tilewind)
+@import "utilities";
+// @import "print";
+
+// Graphics
+@import "graphics/images";
+@import "graphics/animations";
+@import "graphics/transitions";
+
+// third party
+//@import "thirdParty/react-calendar";

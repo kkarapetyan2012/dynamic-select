@@ -1,0 +1,138 @@
+// Typography
+
+// Family
+$families: ("muli": $font-family-muli, "monospace": $font-family-monospace);
+
+@each $family, $value in $families {
+  .text-#{$family} {
+    font-family: $value;
+  }
+}
+
+// Colors
+@each $color, $value in $theme-colors {
+  .text-#{$color} {
+    color: $value;
+  }
+  .#{$color} {
+    @include transition(fill 200ms);
+    fill: $value;
+  }
+}
+
+// Sizing
+$font-sizes: (
+  // "xxs": 12,
+  "xs": 12,
+  "s": 14,
+  "m": 16,
+  "l": 18,
+  "xl": 28,
+  "xxl": 32,
+);
+@each $key, $value in $font-sizes {
+  .text-#{$key} {
+    font-size: $value#{px};
+  }
+}
+
+// Weight and italics
+$font-weights: (
+  // 'thin': 100,
+  'ligther': 200,
+  'thin': 300,
+  'regular': 400,
+  // 'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  // 'bolder': 800,
+  // 'extra-bold': 900,
+);
+@each $key, $value in $font-weights {
+  .text-#{$key} {
+    font-weight: $value;
+  }
+}
+
+// Line heights
+$line-heights: (
+  'extra-short': 1,
+  'short': 1.25,
+  'tall': 1.28,
+  'medium-tall': 1.5,
+  'extra-tall': 1.7,
+);
+@each $key, $value in $line-heights {
+  .text-#{$key} {
+    line-height: $value;
+  }
+}
+
+// Spacing
+// $letter-spaceings: (
+//   'dense': .3,
+//   'dilute': .4,
+// );
+// @each $key, $value in $letter-spaceings {
+//   .text-#{$key} {
+//     letter-spacing: $value;
+//   }
+// }
+
+// Alignment
+.text-justify { text-align: justify; }
+.text-wrap { white-space: normal; }
+.text-nowrap { white-space: nowrap; }
+.text-preLine { white-space: pre-line; }
+.text-truncate { @include text-truncate; }
+.text-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+//Text Decoration
+.text-underline { text-decoration: underline }
+
+// Transformation
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+.text-noTransform { text-transform: none; }
+
+// Responsive placement
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-left { text-align: left; }
+    .text#{$infix}-right { text-align: right; }
+    .text#{$infix}-center { text-align: center; }
+  }
+}
+
+//
+// Links
+//
+
+//
+// Emphasis
+//
+
+// small,
+// .small {
+//   @include font-size($small-font-size);
+//   font-weight: $font-weight-normal;
+// }
+
+// mark,
+// .mark {
+//   padding: $mark-padding;
+//   background-color: $mark-bg;
+// }
+@media (max-width: 576px) {
+  .text {
+    &-xxl {
+      font-size: 28px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.scrollbar {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 4px;  /* Remove scrollbar space */
+    height: 4px;
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+
+  /* Optional: show position indicator in red */
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+
+    @include transition(background-color 200ms);
+
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .no-touch &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: $secondary;
+    }
+    //&::-webkit-scrollbar {
+    //display: block;
+    //}
+  }
+
+  &__highlighted {
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: $separator;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $separator;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $highlighted;
+      border-radius: 6px;
+    }
+  }
+}

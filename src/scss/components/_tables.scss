@@ -1,0 +1,30 @@
+.table {
+  &_row {
+    height: 60px;
+    &:last-child {
+      border-bottom-width: 0;
+    }
+    &.selected {
+      background-color: transparentize($color: $separator, $amount: .3);
+    }
+  }
+  &_headings {
+    height: 56px;
+    background-color: #f3f5f9;
+    border: none;
+  }
+  &_pagination {
+    // TODO (we have classnames for this)
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  &_feedback {
+    // TODO (we have classnames for this)
+    height: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+.th {
+  color: #434751;
+}

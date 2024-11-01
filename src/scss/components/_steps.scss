@@ -1,0 +1,112 @@
+@import "../functions";
+@import "../variables";
+@import "../mixins";
+
+$step-circle-width: 60px;
+$step-circle-height: 60px;
+$step-border: 4px;
+$step-separator-width: 4px;
+$step-separator-height: 86px;
+
+.step {
+  &_item {
+    margin-bottom: 106px;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 10;
+      top: calc(100% + 10px);
+      left: 28px;
+      width: $step-separator-width;
+      height: $step-separator-height;
+      background-color: $disabled;
+    }
+    &:last-child {
+      margin-bottom: 0;
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &_icon-check {
+    margin: calc(50% - 11px);
+  }
+
+  &_indicator {
+    width: $step-circle-width;
+    height: $step-circle-height;
+    border: 4px solid $disabled;
+    outline: 0;
+    border-radius: 50%;
+  }
+
+  &_title {
+    width: calc(100% - 60px);
+  }
+
+  &_description {
+    height: 40px;
+  }
+
+  &__untouched {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__passed {
+    &::after {
+      background-color: $highlighted;
+    }
+    .step_indicator {
+      border-color: $highlighted;
+      background-color: $highlighted;
+    }
+
+    .step_description {
+      color: $brand;
+    }
+  }
+
+  &__current {
+    cursor: default;
+    pointer-events: none;
+    .step_indicator {
+      border-color: $highlighted;
+      background-color: rgba($highlighted, 0.1);
+      background-clip: content-box;
+      padding: 4px;
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        margin: -6px 0 0 -6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $highlighted;
+      }
+    }
+
+    .step_description {
+      color: $highlighted;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

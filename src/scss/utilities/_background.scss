@@ -1,0 +1,21 @@
+// stylelint-disable declaration-no-important
+
+@each $color, $value in $theme-colors {
+  // @include bg-variant(".bg-#{$color}", $value, true);
+  .bg-#{$color} {
+    background-color: $value;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .bg-white-xs {
+    background-color: $white;
+  }
+}
+
+// @if $enable-gradients {
+//   @each $color, $value in $theme-colors {
+//     @include bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
+//   }
+// }
+

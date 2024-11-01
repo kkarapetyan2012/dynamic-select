@@ -1,0 +1,29 @@
+$tabs-width: 170px;
+$track-height: 3px;
+$track-width: $tabs-width;
+
+.tabs {
+  &_toggle {
+    min-width: $tabs-width;
+    list-style: none;
+  }
+
+  &_track {
+    height: $track-height;
+    bottom: -2px;
+    width: 45px;
+    left: 0;
+    height: 3px;
+    background: $rose;
+    border-radius: 5px;
+    @include transition(left 200ms);
+  }
+}
+
+@media (max-width: 437px) {
+  .tabs {
+    &_toggle + &_toggle {
+      margin-left: 30px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.dropdown {
+  &_content {
+    position: absolute;
+    top:calc(100% + 10px);
+    right: 0;
+    min-width: 150px;
+    overflow: hidden;
+    z-index: $zindex-dropdown;
+  }
+  &_toggle {
+    &.current {
+      path {
+        fill: $highlighted;
+      }
+    }
+  }
+  &_content {
+    &__large {
+      width: 700px;
+    }
+  }
+}

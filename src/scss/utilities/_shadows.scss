@@ -1,0 +1,17 @@
+// stylelint-disable declaration-no-important
+
+$elevations: (
+  // '0': 0px 6px 11px rgba(82, 82, 84, 0.11),
+  '1': 0px 6px 11px rgba(82, 82, 84, 0.11),
+  '2': 0px 6px 12px rgba(198, 203, 214, 0.28),
+  '3': 4px 4px 17px rgba(194, 8, 8, 0.11),
+  '4': 4px 4px 17px rgba(24, 41, 92, 0.22),
+  '5': 0px 4px 16px rgba(140, 147, 166, 0.2),
+  '6': 0px 11px 19px rgba(140, 147, 166, 0.16),
+);
+
+@each $elevation, $value in $elevations {
+  .elevation-#{$elevation} {
+    box-shadow: $value;
+  }
+}

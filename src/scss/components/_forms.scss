@@ -1,0 +1,553 @@
+// INPUTS
+$label-transition: color 200ms, font-size 200ms, top 200ms, left 200ms;
+$label-top: 9px;
+$label-left: 20px;
+$label-top-focused: 13px;
+$label-left-focused: 20px;
+$label-size-focused: 12px;
+
+.input {
+  box-shadow: none;
+  width: 100%;
+  overflow: hidden;
+  border: none;
+  @include transition(padding 200ms);
+  outline: 0;
+  min-height: 60px;
+ &__required {
+   .input_label:after {
+     content: '*';
+     color: red;
+     padding-left: 5px;
+   }
+ }
+  &.select {
+    &_toggle {
+      min-height: unset;
+    }
+  }
+
+  &:not(.searchbox_input):focus,
+  &:not(.searchbox_input).focused {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  &.textarea.focused {
+    padding-top: 25px;
+    padding-bottom: 15px;
+  }
+
+  &:focus {
+    & + .input_label {
+      color: $highlighted;
+
+      &.error {
+        color: $danger;
+      }
+    }
+
+    & ~ .input_border {
+      transform: scale(1, 1);
+    }
+  }
+
+  &:disabled {
+    background-color: #f8fafc;
+    color: #c2c6d1;
+
+    & + .input_label {
+      color: #c2c6d1;
+      cursor: default;
+    }
+  }
+
+  &:-webkit-autofill {
+    // for saved passwords autofill
+    -webkit-box-shadow: 200px 200px 100px white inset;
+    box-shadow: 200px 200px 100px white inset;
+  }
+
+  &_wrapper {
+    position: relative;
+  }
+
+  &_border {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    height: 1px;
+    width: calc(100% - 24px);
+    background-color: $highlighted;
+    transform: scale(0, 0);
+    @include transition(transform 200ms);
+
+    &.error {
+      background-color: $danger;
+    }
+  }
+
+  &_label {
+    position: absolute;
+    top: 50%;
+    left: $label-left;
+    right: 45px;
+    z-index: 0;
+    cursor: text;
+    @include transition($label-transition);
+    transform: translateY(-50%);
+
+    &.focused {
+      font-size: $label-size-focused;
+      z-index: 2;
+      top: $label-top-focused;
+      left: $label-left-focused;
+      right: 5px;
+    }
+  }
+
+  &_error {
+    position: absolute;
+    top: calc(100% + 5px);
+    height: 25px;
+    left: 12px;
+  }
+
+  &_icon {
+    position: absolute;
+    right: 20px;
+    top: 19px;
+  }
+
+  &.with-icon {
+    padding-right: 50px;
+  }
+}
+
+.textarea {
+  min-height: 120px;
+
+  & + .input_label {
+    top: 25px;
+
+    &.focused {
+      top: $label-top-focused;
+      padding-top: 8px;
+      padding-bottom: 5px;
+      margin-right: 40px;
+      background-color: #f8fafc;
+    }
+  }
+
+  &:disabled {
+    background-color: none;
+  }
+}
+
+.searchbox {
+  &_icon {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+  }
+
+  &_input {
+    padding-left: 60px;
+  }
+
+  &_filter.dropdown {
+    position: absolute;
+    right: 0;
+    top: 1px;
+  }
+}
+
+// CHECKBOX
+$checkbox-bg-checked: $highlighted;
+$checkbox-border-color-checked: $highlighted;
+$checkbox-color-checked: $primary;
+$checkbox-border-color-disabled: $disabled;
+$checkbox-color-disabled: $disabled;
+$checkbox-border: 2px solid $secondary;
+$checkbox-border-radius: 2px;
+$checkbox-width: 18px;
+$checkbox-height: 18px;
+$checkbox-transision: border-color 200ms, background-color 200ms;
+$checkbox-text-lh: 1;
+$checkbox-text-distance: 16px;
+$checkbox-thin-width: 12px;
+$checkbox-thin-height: 14px;
+
+$checkbox-border-width: 2px;
+$checkbox-top: calc(56% - #{($checkbox-thin-width + $checkbox-border-width)} / 2);
+$checkbox-left: calc(56% - #{($checkbox-thin-height + $checkbox-border-width)} / 2);
+
+.checkbox {
+  position: absolute;
+  visibility: hidden;
+
+  &_square {
+    border: $checkbox-border;
+    border-radius: $checkbox-border-radius;
+    width: $checkbox-width;
+    height: $checkbox-height;
+    @include transition($checkbox-transision);
+    display: block;
+    float: left;
+    position: relative;
+  }
+
+  &_label {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+  }
+
+  &_text {
+    display: block;
+    line-height: $checkbox-text-lh;
+    margin-left: $checkbox-width + $checkbox-text-distance;
+  }
+
+  &_tick {
+    position: absolute;
+    left: $checkbox-top;
+    top: $checkbox-top;
+  }
+
+  &_indeterminate {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+  }
+
+  &__nested {
+    padding-left: 57px;
+  }
+
+  &:checked {
+    & + .checkbox_square {
+      background-color: $highlighted;
+      border-color: $checkbox-border-color-checked;
+    }
+
+    & ~ .checkbox_text {
+      color: $checkbox-color-checked;
+    }
+  }
+
+  &:disabled {
+    & + .checkbox_square {
+      border-color: $checkbox-border-color-disabled;
+    }
+
+    & ~ .checkbox_text {
+      color: $checkbox-color-disabled;
+    }
+  }
+}
+
+// RADIO
+$radio-width: 20px;
+$radio-height: 20px;
+$radio-border-width: 2px;
+$radio-border: $radio-border-width solid $secondary;
+$radio-small-circle-bg: $highlighted;
+$radio-small-circle-width: 10px;
+$radio-small-circle-height: 10px;
+// $radio-small-circle-top: ($radio-width - 2 * $radio-border-width - $radio-small-circle-width) / 2;
+// $radio-small-circle-left: ($radio-height - 2 * $radio-border-width - $radio-small-circle-height) / 2;
+$radio-small-circle-top: calc(55% - #{($radio-small-circle-width + $radio-border-width)} / 2);
+$radio-small-circle-left: calc(55% - #{($radio-small-circle-height + $radio-border-width)} / 2);
+$radio-small-circle-transition: transform 200ms;
+$radio-text-lh: 1.2;
+$radio-text-distance: 12px;
+.radio {
+  position: absolute;
+  visibility: hidden;
+
+  &_circle {
+    width: $radio-width;
+    height: $radio-height;
+    border: $radio-border;
+    position: relative;
+    display: block;
+    float: left;
+    border-radius: 50%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: $radio-small-circle-top;
+      left: $radio-small-circle-left;
+      border-radius: 50%;
+      width: $radio-small-circle-width;
+      height: $radio-small-circle-height;
+      transform: scale(0, 0);
+      background-color: $radio-small-circle-bg;
+      @include transition($radio-small-circle-transition);
+    }
+  }
+
+  &_label {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+  }
+
+  &_text {
+    display: block;
+    line-height: $radio-text-lh;
+    margin-left: $radio-width + $radio-text-distance;
+  }
+
+  &:checked {
+    & + .radio_circle {
+      border-color: $highlighted;
+
+      &::before {
+        transform: scale(1, 1);
+      }
+    }
+
+    & ~ .radio_text {
+      color: $primary;
+    }
+  }
+}
+
+// SELECTS
+.select {
+  position: relative;
+  width: 100%;
+
+  &_toggle {
+    text-transform: none;
+    position: relative;
+    height: 60px;
+    z-index: 1;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    &:focus {
+      border-color: $primary;
+
+      .input_border {
+        transform: scale(1, 1);
+      }
+    }
+
+    &.btn {
+      justify-content: flex-start;
+      white-space: pre-wrap;
+      text-align: left;
+      padding-right: 40px;
+
+      &:disabled {
+        background-color: #f8fafc;
+        color: #c2c6d1;
+      }
+    }
+  }
+
+  .input {
+    cursor: pointer;
+  }
+
+  .input_label {
+    cursor: pointer;
+  }
+
+  &_icon {
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    top: 24px;
+    cursor: pointer;
+  }
+
+  &_clear {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    margin-top: -20px;
+    z-index: 2;
+    padding: 10px;
+  }
+
+  &_search {
+    & + .input_label {
+      top: 13px;
+
+      &.focused {
+        top: -20px;
+      }
+    }
+  }
+
+  &_menu {
+    position: absolute;
+    top: 64px;
+    width: 100%;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    left: 0;
+    outline: 0;
+
+    &__top {
+      top: -205px;
+    }
+  }
+
+  &_option {
+    cursor: pointer;
+    height: 40px;
+
+    .no-touch &__hover {
+      background-color: rgba($light, 0.5);
+    }
+
+    .touch &__chosen,
+    .no-touch &__chosen {
+      background-color: rgba($light, 0.5);
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .touch &__disabled,
+    .no-touch &__disabled {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &__open {
+    .select_icon {
+      transform: rotate(180deg);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .select_toggle {
+      // pointer-events: none;
+      // cursor: default;
+    }
+  }
+
+  &__clearable {
+    .select_toggle {
+      padding-right: 76px;
+    }
+  }
+
+  &__chosen {
+    .select_toggle.input {
+      color: $black;
+      caret-color: $black;
+      border-color: $primary;
+      padding-top: 25px;
+      padding-bottom: 15px;
+
+      &:focus .input_label {
+        color: $highlighted;
+      }
+    }
+
+    &:not(.select__open) {
+      .input {
+        caret-color: transparent;
+      }
+    }
+
+    .input_border {
+      transform: scale(1, 1);
+    }
+  }
+
+  &__multi {
+    &.select__chosen .input_label:not(.focused) {
+      color: $primary;
+    }
+
+    .select_option__chosen {
+      pointer-events: auto;
+    }
+
+    &.select__chosen {
+      .select_toggle {
+        color: $primary;
+      }
+    }
+
+    &.select__open {
+      .input_border {
+        transform: scale(1, 1);
+      }
+    }
+  }
+
+  &__disabled {
+    background-color: #f8fafc;
+    pointer-events: none;
+
+    .select_icon path {
+      fill: #c2c6d1;
+    }
+
+    .svg-icon {
+      display: none;
+    }
+
+    .input_border {
+      transform: scale(1, 1);
+      background-color: $separator;
+    }
+
+    .select_toggle {
+      color: $secondary;
+    }
+
+    .input {
+      background-color: #f8fafc;
+    }
+  }
+
+  &__tiny {
+    width: 85px;
+
+    .select_toggle.input {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      height: 40px;
+      background-color: #eeeff4;
+      border-radius: 4px;
+    }
+    .select_menu {
+      &__top {
+        top: -125px;
+      }
+    }
+    .select_icon {
+      top: 17px;
+    }
+  }
+}
+
+.option__hover {
+  &:hover {
+    background-color: rgba($light, 0.5);
+  }
+}
+
+@media screen and (max-width: 812px) {
+  .input {
+    &_label {  
+      &.focused {
+        left: 16px;
+        transform: translateY(-30%);
+      }
+    }
+  }
+}

@@ -1,0 +1,149 @@
+// define hover, active, focus, disabled states here
+// use @include hover and other mixins
+.hover {
+  @include transition(background-color 200ms, box-shadow 200ms);
+
+  .no-touch &:hover {
+    background-color: $hover;
+    box-shadow: 0px 6px 11px rgba(224, 32, 32, 0.27);
+  }
+
+  &:disabled {
+    background-color: $disabled;
+  }
+
+  &-text {
+    .no-touch &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-rose {
+    .no-touch &:hover {
+      color: $rose;
+      text-decoration: none;
+
+      .svg-icon path {
+        fill: $rose;
+      }
+    }
+  }
+
+  &-bg-rose {
+    .no-touch &:hover {
+      background-color: rgba($rose, 0.04);
+    }
+
+    &:disabled {
+      background-color: $hidden;
+      border-color: $disabled;
+      color: $disabled;
+    }
+  }
+
+  &-bg-lightRose {
+    .no-touch &:hover {
+      background-color: rgba($rose, 0.1);
+      border-color: rgba($rose, 0.1);
+      color: $rose;
+    }
+
+    &:disabled {
+      background-color: $gray;
+      border-color: $gray;
+      color: $secondary;
+    }
+  }
+
+  &-bg-success {
+    .no-touch &:hover {
+      background-color: rgba($success, 0.1);
+      // border-color: rgba($success, 0.1);
+      color: $success;
+    }
+
+    &:disabled {
+      background-color: $gray;
+      border-color: $gray;
+      color: $secondary;
+    }
+  }
+
+  &-bg-highlighted {
+    .no-touch &:hover {
+      background-color: rgba($highlighted, 0.04);
+    }
+
+    &:disabled {
+      background-color: $hidden;
+      border-color: $disabled;
+      color: $disabled;
+    }
+  }
+
+  &-primary {
+    @include transition(color 200ms);
+
+    .no-touch &:hover {
+      color: $primary;
+
+      path {
+        fill: $primary;
+      }
+    }
+  }
+
+  &-bg-darkHighlighted {
+    .no-touch &:hover {
+      background-color: rgba($highlighted, 0.1);
+    }
+
+    &:disabled {
+      background-color: $hidden;
+      color: $disabled;
+
+      .svg-icon path {
+        fill: $disabled;
+      }
+    }
+  }
+}
+.disable-disabled {
+  &:disabled {
+    background-color: $disabled;
+    border-color: $disabled;
+    color: white;
+    .svg-icon path {
+      fill: white;
+    }
+  }
+}
+
+.no-select {
+  user-select: none;
+}
+
+.loading {
+  cursor: default;
+  pointer-events: none;
+}
+
+.current, .active {
+  pointer-events: none;
+  cursor: default;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer-events-none { pointer-events: none; }
+
+@each $elevation, $value in $elevations {
+  .hover-elevation-#{$elevation} {
+    .no-touch &:hover {
+      box-shadow: $value;
+      @include transition(box-shadow 200ms);
+    }
+  }
+}

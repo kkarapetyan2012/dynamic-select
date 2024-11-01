@@ -1,0 +1,46 @@
+$btn-transition: color 200ms ease-out, background-color 200ms ease-out;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  user-select: none;
+  padding: 0;
+  @include transition($btn-transition);
+  &:focus {
+    outline: 0;
+  }
+  &:disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  &__main {
+    height: 60px;
+  }
+  &__outlined {
+    height: 60px;
+  }
+  &__xs {
+    min-width: 68px;
+  }
+  &__sm {
+    min-width: 89px;
+  }
+  &__mw {
+    min-width: 192px;
+  }
+  &__brand {
+    background-color: rgba(24, 41, 92, 0.1);
+  }
+  &__lightBlue {
+    background-color: rgba(72, 144, 205, 0.1);
+  }
+  &__lightRed {
+    background-color: rgba(255, 103, 70, 0.1);
+  }
+}

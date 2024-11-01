@@ -1,0 +1,13 @@
+$tooltip-max-width: 360px;
+
+.tooltip {
+  position: fixed;
+  overflow: hidden;
+  max-width: $tooltip-max-width;
+  z-index: $zindex-tooltip;
+  opacity: 0;
+  transform: translateY(-100%);
+  &__centered {
+    transform: translate(-50%, -100%);
+  }
+}

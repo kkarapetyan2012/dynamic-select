@@ -1,0 +1,27 @@
+.snackbar {
+  position: fixed;
+  max-width: 406px;
+  min-width: 350px;
+  right: 0;
+  height: 50px;
+  border-left: 3px solid;
+  z-index: $zindex-popover;
+  &_icon {
+    width: 22px;
+  }
+  &_remove {
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
+  &__success {
+    color: $success;
+    border-color: $success;
+    // background-color: transparentize($color: $success, $amount: .1);
+  }
+  &__danger {
+    color: $danger;
+    border-color: $danger;
+    // background-color: transparentize($color: $danger, $amount: .1);
+  }
+}

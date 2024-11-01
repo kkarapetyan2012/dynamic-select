@@ -1,0 +1,27 @@
+$transitions: (
+  'base': all .2s ease-in-out,
+  'fade': opacity .15s linear,
+  'collapse': max-height .35s ease,
+);
+@each $transition, $value in $transitions {
+  .transition-#{$transition} {
+    @include transition($value);
+  }
+}
+
+.fade-in {
+  opacity: 1;
+}
+// .collapse {
+//   max-height: 500px;
+// }
+// .collapse-in {
+//   max-height: 0;
+//   overflow: hidden;
+// }
+// .collapse-out {
+//   max-height: none;
+// }
+// .fade-out {
+//   opacity: 0;
+// }

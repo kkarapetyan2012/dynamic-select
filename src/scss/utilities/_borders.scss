@@ -1,0 +1,45 @@
+// stylelint-disable property-blacklist, declaration-no-important
+
+// Border
+
+$border-width: 1px;
+$border-sides: left, right, top, bottom;
+$border-radiuses: 0, 4, 6, 8, 12, 26, 32;
+$border-corners: top-left, top-right, bottom-left, bottom-right;
+
+// width
+.border {
+  border: $border-width solid;
+}
+.border-2 {
+  border: 2px solid;
+}
+@each $side in $border-sides {
+  .border-#{$side} {
+    border-#{$side}: $border-width solid;
+  }
+}
+.border-0 {border: 0}
+
+// color
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: $value;
+  }
+}
+
+// radius
+.rounded {
+  border-radius: 50%;
+}
+@each $radius in $border-radiuses {
+  .rounded-#{$radius} {
+    border-radius: $radius#{px};
+  }
+}
+
+@each $corner in $border-corners {
+  .rounded-#{$corner}-0 {
+    border-#{$corner}-radius: 0;
+  }
+}

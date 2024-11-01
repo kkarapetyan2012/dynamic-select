@@ -1,0 +1,30 @@
+.chips {
+  chips_disabled {
+    background-color: $disabled;
+    user-select: none;
+  }
+  &__main {
+    background-color: transparentize($color: $highlighted, $amount: .1);
+  }
+  &.removable {
+    position: relative;
+    padding-right: 40px;
+  }
+  &_remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &__selected {
+    &.removable {
+      padding-right: 50px;
+    }
+    .chips_remove {
+      right: 10px;
+    }
+    &.bg-bluish {
+      background-color: #3F58A5;
+    }
+  }
+}

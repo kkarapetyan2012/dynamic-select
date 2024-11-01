@@ -1,15 +1,14 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
+import { createCSSClass } from "../utils/jsxHelpers";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const handlePrevious = () => {
+  const handlePrevPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handleNext = () => {
+  const handleNextPage = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }
@@ -17,11 +16,35 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   return (
     <div className="pagination">
-      <button onClick={handlePrevious} disabled={currentPage === 1}>
+      <button
+        onClick={handlePrevPage}
+        disabled={currentPage === 1}
+      >
         Previous
       </button>
-      <span>Page {currentPage} of {totalPages}</span>
-      <button onClick={handleNext} disabled={currentPage === totalPages}>
+
+      {/* Generate page numbers dynamically */}
+      {[...Array(totalPages).keys()].map((page) => {
+        const pageNumber = page + 1;
+        // Create the className dynamically using createCSSClass
+        const className = createCSSClass(
+          ["pagination-button"], // Static classes
+          { active: currentPage === pageNumber } // Dynamic class: 'active' if it's the current page
+        );
+
+        return (
+          <button
+            key={pageNumber}
+            className={className}
+            onClick={() => onPageChange(pageNumber)}
+            disabled={currentPage === pageNumber}
+          >
+            {pageNumber}
+          </button>
+        );
+      })}
+
+      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
         Next
       </button>
     </div>

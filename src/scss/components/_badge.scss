@@ -1,0 +1,26 @@
+.badge {
+  border-radius: 38px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  text-transform: capitalize;
+  &__PENDING {
+    background-color: rgba(255, 205, 5, 0.1);
+    color: $info;
+  }
+  &__FAILED, &__EXPIRED {
+    background-color: rgba(224, 32, 32, 0.1);
+    color: $rose;
+  }
+  &__ACCEPTED {
+    background-color: rgba(30, 194, 115, 0.1);
+    color: $success;
+  }
+  &__NEW {
+    background-color: rgba(19, 90, 242, 0.1);
+    color: $highlighted;
+  }
+  &__NONE {
+    background-color: $gray;
+    color: $secondary;
+  }
+}

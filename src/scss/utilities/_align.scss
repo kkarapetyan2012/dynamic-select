@@ -1,0 +1,19 @@
+// stylelint-disable declaration-no-important
+
+.align-baseline    { vertical-align: baseline ; } // Browser default
+.align-top         { vertical-align: top; }
+.align-middle      { vertical-align: middle; }
+.align-bottom      { vertical-align: bottom; }
+.align-text-bottom { vertical-align: text-bottom; }
+.align-text-top    { vertical-align: text-top; }
+
+// transformations
+.self-centeredX {
+  transform: translateX(-50%);
+}
+.self-centeredY {
+  transform: translateY(-50%);
+}
+.self-centered {
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,80 @@
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes slideRight {
+  from { right: -100%; }
+  to { right: 10px; }
+}
+
+/* Standard syntax */
+@keyframes slideRight {
+  from { right: -100%; }
+  to { right: 10px; }
+}
+
+.slide-right {
+  -webkit-animation-name: slideright; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 200ms; /* Safari 4.0 - 8.0 */
+  animation-name: slideRight;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes slideRightBack {
+  from { right: 10px; }
+  to { right: -100%; }
+}
+
+/* Standard syntax */
+@keyframes slideRightBack {
+  from { right: 10px; }
+  to { right: -100%; }
+}
+
+.slide-right-back {
+  -webkit-animation-name: sliderightback; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 200ms; /* Safari 4.0 - 8.0 */
+  animation-name: slideRightBack;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+}
+
+// /* Safari 4.0 - 8.0 */
+// @-webkit-keyframes fadeIn {
+//   0% { opacity: 0; }
+//   70% { opacity: 0; }
+//   100% { opacity: 1; }
+// }
+
+// /* Standard syntax */
+// @keyframes fadeIn {
+//   0% { opacity: 0; }
+//   70% { opacity: 0; }
+//   100% { opacity: 1; }
+// }
+
+// .fadeIn {
+//   -webkit-animation-name: fadein; /* Safari 4.0 - 8.0 */
+//   -webkit-animation-duration: 1000ms; /* Safari 4.0 - 8.0 */
+//   animation-name: fadeIn;
+//   animation-duration: 1000ms;
+//   animation-fill-mode: forwards;
+// }
+
+.rotate360 {
+  -webkit-animation: rotate360 3000ms linear infinite;
+  animation: rotate360 3000ms linear infinite;
+}
+
+@-webkit-keyframes rotate360 {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate360 {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
